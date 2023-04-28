@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@myorg/entities": ["libs/entities/src/index.ts"],
+      "@myorg/hooks": ["libs/hooks/src/index.ts"],
+      "@myorg/repository": ["libs/repository/src/index.ts"],
+      "@myorg/services": ["libs/services/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
