@@ -1,18 +1,26 @@
+import { iHero } from '@myorg/entities';
 import { useHero } from '@myorg/hooks';
+import { useEffect, useState } from 'react';
+import { HeroItem } from './HeroItem';
 
 export const HeroList = () => {
-  const { heroes } = useHero();
+  const { heroList } = useHero();
+
+  const [data, setData] = useState<iHero[] | null>(null);
+
+  async function load() {
+    const result = await heroList();
+    setData(result);
+  }
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <div>
-      {heroes?.map((item) => (
-        <div key={item.instance_id} className="flex gap-2">
-          <div className="w-8">{item.heroId}</div>
-          <div className="w-28">{item.name}</div>
-          <div className="w-28">{item.title}</div>
-          <div className="w-28">{item.alias}</div>
-          <div>{item.keywords}</div>
-        </div>
+      {data?.map((item) => (
+        <HeroItem key={item.heroId} heroes={item} />
       ))}
     </div>
   );
